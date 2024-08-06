@@ -1,69 +1,83 @@
 .dashboard-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .dashboard-card {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dashboard-card h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .dashboard-card p {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .car-list-container {
-    padding: 20px;
-  }
-  
-  .car-list h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .car-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .car-list .car-item {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .car-list .car-item .car-details h4 {
-    margin: 0;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .car-list .car-item .car-details p {
-    margin: 5px 0;
-    color: #555;
-  }
-  
-  .loading {
-    text-align: center;
-    color: #007bff;
-  }
-  
-  .error {
-    text-align: center;
-    color: red;
-  }
-  
+  margin-left: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.dashboard-card {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.dashboard-card p {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fd795f;
+}
+
+.car-list-container {
+  padding: 20px;
+  width: 100%; 
+}
+
+.car-list h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+  text-align: center; 
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
+}
+
+.car-list .car-item {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;  
+}
+
+.car-list .car-item:hover {
+  background-color: yellow; 
+  color: #fff; 
+  transform: translateY(-5px); 
+}
+
+.car-list .car-item .car-details h4 {
+  margin: 0;
+  font-size: 24px;
+  color: #f64545;
+}
+
+.car-list .car-item .car-details p {
+  margin: 15px 0;
+  color: #555;
+}
+
+.search-input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 24px;
+}

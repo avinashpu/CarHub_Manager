@@ -1,55 +1,72 @@
 .add-car-container {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-    max-width: 400px;
-    margin: auto;
-}
-
-.add-car-container h2 {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-car-container h2 {
     text-align: center;
     margin-bottom: 20px;
-}
-
-.form {
+    color: #f29f22;
+    font-size: 40px;
+  }
+  
+  .form {
     display: flex;
     flex-direction: column;
-}
-
-.form-group {
+    font-size: 30px;
+  }
+  
+  .form-group {
     margin-bottom: 15px;
-}
-
-.form-group label {
-    font-weight: bold;
-}
-
-.form-group input {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #bdc3c7;
-    font-size: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
     width: 100%;
-}
-
-.error {
-    color: #e74c3c;
-    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .form-group .error {
+    color: red;
     font-size: 14px;
-}
-
-.add-car-button {
-    padding: 10px 15px;
-    background-color: #3498db;
+    margin-top: 5px;
+  }
+  
+  .add-car-button {
+    background-color:#2c3e50;
     color: #fff;
     border: none;
+    padding: 15px;
     border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.add-car-button:disabled {
-    background-color: #95a5a6;
+    transition: background-color 0.3s ease;
+    align-self: center; 
+  }
+  
+  .add-car-button:hover {
+    background-color: #2c3e50af; 
+  }
+  
+  .add-car-button:disabled {
+    background-color: #ccc;
     cursor: not-allowed;
-}
+  }
+  .form-group input[type="text"] {
+    font-size: 16px; 
+    width: 100%;
+    box-sizing: border-box;
+  }

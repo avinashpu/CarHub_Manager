@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
 import { API_URL } from '../util';
-import CarList from './CarList'; // Import CarList component
+import CarList from './CarList'; 
 
 const Dashboard = () => {
   const [totalCars, setTotalCars] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch car data when component mounts
   useEffect(() => {
     const fetchCarData = async () => {
       try {
@@ -45,7 +44,7 @@ const Dashboard = () => {
         <h3>Total Number of Cars</h3>
         <p>{totalCars}</p>
       </div>
-      <CarList /> {/* Add CarList component here */}
+      <CarList /> 
     </div>
   );
 };

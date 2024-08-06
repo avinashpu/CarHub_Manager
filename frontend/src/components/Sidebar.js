@@ -13,17 +13,12 @@ const Sidebar = () => {
         <aside className="sidebar">
             <ul>
             <li 
-                    className={activeLink === '/dashboard' ? 'active' : ''}
-                    onClick={() => handleClick('/dashboard')}
+                    className={activeLink === '/' ? 'active' : ''}
+                    onClick={() => handleClick('/')}
                 >
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/">Dashboard</Link>
                 </li>
-                <li 
-                    className={activeLink === '/car' ? 'active' : ''}
-                    onClick={() => handleClick('/car')}
-                >
-                    <Link to="/car">Car List</Link>
-                </li>
+                
                 <li 
                     className={activeLink === '/add-car' ? 'active' : ''}
                     onClick={() => handleClick('/add-car')}
