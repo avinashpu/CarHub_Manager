@@ -1,4 +1,13 @@
-.App {
-  text-align: center;
+.app-container {
+  display: flex;
+  flex-direction: column;
 }
 
+.content {
+  margin-top: 60px; /* height of the header */
+  margin-left: 250px; /* width of the sidebar */
+  padding: 20px;
+  width: calc(100% - 250px);
+  height: calc(100vh - 60px); /* full height minus the header */
+  overflow-y: auto;
+}

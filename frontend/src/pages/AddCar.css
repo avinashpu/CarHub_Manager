@@ -1,0 +1,55 @@
+.add-car-container {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.add-car-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #bdc3c7;
+    font-size: 16px;
+    width: 100%;
+}
+
+.error {
+    color: #e74c3c;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.add-car-button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.add-car-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}

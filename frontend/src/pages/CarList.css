@@ -1,0 +1,48 @@
+/* CarList.css */
+.main-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.loading {
+    color: #3498db;
+}
+
+.error {
+    color: red;
+}
+
+.car-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.car-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.car-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.car-details h4 {
+    margin: 0 0 10px;
+}
+
+.car-details p {
+    margin: 5px 0;
+}

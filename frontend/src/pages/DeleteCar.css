@@ -1,0 +1,48 @@
+.delete-car-container {
+  padding: 20px;
+}
+
+.car-dropdown {
+  margin-bottom: 20px;
+}
+
+.car-details {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group div {
+  margin-top: 5px;
+}
+
+.delete-car-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.delete-car-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.success-message {
+  margin-top: 20px;
+  color: #2ecc71;
+}
+
+.error-message {
+  margin-top: 20px;
+  color: #e74c3c;
+}
