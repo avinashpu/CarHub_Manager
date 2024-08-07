@@ -1,4 +1,3 @@
-
 // apiResponse.js
 const { Response } = require('express');
 

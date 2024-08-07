@@ -1,52 +1,23 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken'); 
 
-
-const userSchema = new Schema({
-   
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true
-    },
-   
-   
-   
-    password: {
-        type: String,
-        required: true
-    },
-    refreshToken: {
-        type: String,
-        default: null
-    }
-}, { timestamps: true });
-
-userSchema.pre('save', async function(next) {
-    if (!this.isModified('password')) return next();
-        this.password = bcrypt.hash(this.password, 10);
-        next();
-
-    
+const userSchema = new mongoose.Schema({
+    name: String,
+    mobileNumber: { type: String, unique: true },
+    password: { type: String, default: '123456' },
+    role: { type: String, enum: ['admin', 'member'], default: 'admin' }
 });
 
-userSchema.methods.comparePassword = async function(candidatePassword) {
-    const isMatch = await bcrypt.compare(candidatePassword, this.password);
-    return isMatch;
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
+
+userSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
 };
-
-
-userSchema.methods.generateAuthToken = async function() {
-    const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    this.refreshToken = token; // You can store the refresh token in the database if needed
-    await this.save();
-    return token;
-};
-
 
 const User = mongoose.model('User', userSchema);
 
