@@ -8,7 +8,7 @@ const authRoutes = require('./src/routes/authRoutes');
 
 
 const corsOptions = {
-    origin: '*',  // Replace with your frontend URL or an array of URLs
+    origin: '*',  
     Credential: true,
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: 'Content-Type, Authorization',
