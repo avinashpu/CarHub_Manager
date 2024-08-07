@@ -5,14 +5,7 @@ const jwt = require('jsonwebtoken');
 
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-        trim: true,
-        index: true
-    },
+   
     email: {
         type: String,
         required: true,
@@ -20,27 +13,9 @@ const userSchema = new Schema({
         trim: true,
         lowercase: true
     },
-    fullname: {
-        type: String,
-        required: true,
-        trim: true,
-        index: true
-    },
-    avatar: {
-        type: String,
-        required: true, //cloudinary url
-        trim: true,
-        index: true
-    },
-    coverimage: {
-        type: String,
-        //cloudinary url
-    },
-    
-    watchHistory: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Video'
-    }],
+   
+   
+   
     password: {
         type: String,
         required: true

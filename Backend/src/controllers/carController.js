@@ -1,11 +1,31 @@
 const Car = require('../models/car.model');
+const { uploadOnCloudinary } = require('../utils/cloudinary');
 
-
+// Create a new car with an image upload
 const createCar = async (req, res) => {
     const { carName, manufacturingYear, price } = req.body;
     try {
         console.log("Creating car:", { carName, manufacturingYear, price });
-        const newCar = new Car({ carName, manufacturingYear, price });
+
+        // Check if an image was uploaded
+        let carImageUrl = null;
+        if (req.file) {
+            const localFilePath = req.file.path;
+            const cloudinaryResponse = await uploadOnCloudinary(localFilePath);
+            if (cloudinaryResponse) {
+                carImageUrl = cloudinaryResponse.secure_url;
+            } else {
+                return res.status(500).json({ msg: 'Image upload failed' });
+            }
+        }
+
+        const newCar = new Car({
+            carName,
+            manufacturingYear,
+            price,
+            carImage: carImageUrl // Save the Cloudinary image URL if available
+        });
+
         await newCar.save();
         console.log("Car created:", newCar);
         res.status(201).json(newCar);
@@ -15,6 +35,7 @@ const createCar = async (req, res) => {
     }
 };
 
+// Get all cars
 const getAllCars = async (req, res) => {
     try {
         console.log("Fetching all cars");
@@ -27,6 +48,7 @@ const getAllCars = async (req, res) => {
     }
 };
 
+// Get a car by ID
 const getCarById = async (req, res) => {
     try {
         console.log("Fetching car with ID:", req.params.id);
@@ -43,6 +65,7 @@ const getCarById = async (req, res) => {
     }
 };
 
+// Update a car by ID with optional image update
 const updateCar = async (req, res) => {
     const { carName, manufacturingYear, price } = req.body;
     try {
@@ -51,6 +74,17 @@ const updateCar = async (req, res) => {
         if (!car) {
             console.log("Car not found with ID:", req.params.id);
             return res.status(404).json({ msg: 'Car not found' });
+        }
+
+        // Check if an image was uploaded
+        if (req.file) {
+            const localFilePath = req.file.path;
+            const cloudinaryResponse = await uploadOnCloudinary(localFilePath);
+            if (cloudinaryResponse) {
+                car.carImage = cloudinaryResponse.secure_url;
+            } else {
+                return res.status(500).json({ msg: 'Image upload failed' });
+            }
         }
 
         car.carName = carName;
@@ -66,6 +100,7 @@ const updateCar = async (req, res) => {
     }
 };
 
+// Delete a car by ID
 const deleteCar = async (req, res) => {
     try {
         console.log("Deleting car with ID:", req.params.id);
@@ -83,7 +118,6 @@ const deleteCar = async (req, res) => {
         res.status(500).json({ msg: 'Server error', error: err.message });
     }
 };
-
 
 module.exports = {
     createCar,

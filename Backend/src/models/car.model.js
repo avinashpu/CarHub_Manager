@@ -6,6 +6,10 @@ const CarSchema = new mongoose.Schema({
     carName: { type: String, required: true },
     manufacturingYear: { type: Number, required: true },
     price: { type: Number, required: true },
+    carImage: {
+        type: String,
+
+    },
 });
 CarSchema.plugin(AutoIncrement, { inc_field: ' S_NO' });
 module.exports = mongoose.model('Car', CarSchema);
