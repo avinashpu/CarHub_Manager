@@ -56,8 +56,23 @@ const login = async (req, res) => {
     }
 };
 
+const logout = (req, res) => {
+    // In a stateless JWT setup, logging out is handled on the client-side
+    // The client should delete or clear the token from local storage or cookies
 
-module.exports = { register, login };
+    try {
+        // Here, you might also implement server-side logic if using token blacklisting
+        // but it's not common for basic JWT setups
+
+        // Simply return a success response
+        APIResponse.successResponse(res, 'User logged out successfully');
+    } catch (error) {
+        console.error("Logout Error:", error); // Log the error for debugging
+        APIResponse.errorResponse(res, error.message);
+    }
+};
+
+module.exports = { register, login, logout };
 
 
 
