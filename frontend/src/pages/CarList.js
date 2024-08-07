@@ -46,9 +46,16 @@ const CarList = () => {
           {cars.map((car) => (
             <div key={car._id} className="car-item">
               <div className="car-details">
+              {car.carImage && (
+                  <div className="car-image">
+                    <img src={car.carImage} alt={car.carName || 'Car'} />
+                  </div>)}
                 <h4>{car.carName || 'No Name'}</h4>
                 <p><strong>Year:</strong> {car.manufacturingYear || 'No Year'}</p>
                 <p><strong>Price:</strong> ${car.price || 'No Price'}</p>
+                
+                
+
               </div>
             </div>
           ))}

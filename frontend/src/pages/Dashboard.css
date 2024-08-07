@@ -81,3 +81,9 @@
   border-radius: 8px;
   font-size: 24px;
 }
+.car-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}

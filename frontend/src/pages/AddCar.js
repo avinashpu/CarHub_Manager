@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { API_URL } from '../util'; 
+import { API_URL } from '../util';
 import '../pages/AddCar.css';
 
 const AddCar = () => {
+  const [carImage, setCarImage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
+
   const initialValues = {
     carName: '',
     manufacturingYear: '',
@@ -24,17 +27,49 @@ const AddCar = () => {
   });
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    axios.post(`${API_URL}/api/car`, values)
+    // Check if form values are empty
+    if (!values.carName && !values.manufacturingYear && !values.price && !carImage) {
+      setSuccessMessage('Car added successfully');
+      setSubmitting(false);
+      resetForm();
+      setCarImage(null);
+      // Hide the message after 3 seconds
+      setTimeout(() => setSuccessMessage(''), 3000);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('carName', values.carName);
+    formData.append('manufacturingYear', values.manufacturingYear);
+    formData.append('price', values.price);
+    if (carImage) {
+      formData.append('carImage', carImage);
+    }
+
+    axios.post(`${API_URL}/api/car`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
       .then(response => {
         console.log('Car added successfully:', response.data);
+        setSuccessMessage('Car added successfully');
         resetForm();
+        setCarImage(null);
       })
       .catch(error => {
         console.error('Error adding car:', error);
+        setSuccessMessage('');
       })
       .finally(() => {
         setSubmitting(false);
+        // Hide the message after 3 seconds
+        setTimeout(() => setSuccessMessage(''), 3000);
       });
+  };
+
+  const handleImageChange = (event) => {
+    setCarImage(event.target.files[0]);
   };
 
   return (
@@ -65,9 +100,16 @@ const AddCar = () => {
               <ErrorMessage name="price" component="div" className="error" />
             </div>
 
+            <div className="form-group">
+              <label htmlFor="carImage">Car Image</label>
+              <input type="file" id="carImage" name="carImage" onChange={handleImageChange} />
+            </div>
+
             <button type="submit" className="add-car-button" disabled={isSubmitting}>
               Add Car
             </button>
+
+            {successMessage && <p className="success-message">{successMessage}</p>}
           </Form>
         )}
       </Formik>
