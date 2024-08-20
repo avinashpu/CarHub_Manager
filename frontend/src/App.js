@@ -1,8 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-// import CarList from './pages/CarList';
 import AddCar from './pages/AddCar';
 import UpdateCar from './pages/UpdateCar';
 import DeleteCar from './pages/DeleteCar';
@@ -17,7 +16,6 @@ const App = () => {
       <div className="content">
         <Routes> 
         <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/car" element={<CarList />} />  */}
           <Route path="/add-car" element={<AddCar />} />
           <Route path="/update-car" element={<UpdateCar />} />
           <Route path="/delete-car" element={<DeleteCar />} />

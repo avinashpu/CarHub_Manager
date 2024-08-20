@@ -13,7 +13,6 @@ const DeleteCar = () => {
 
   const navigate = useNavigate();
 
-  // Fetch car data when component mounts
   useEffect(() => {
     fetchCarData();
   }, []);
