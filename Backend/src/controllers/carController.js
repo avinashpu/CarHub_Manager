@@ -1,13 +1,11 @@
 const Car = require('../models/car.model');
 const { uploadOnCloudinary } = require('../utils/cloudinary');
 
-// Create a new car with an image upload
 const createCar = async (req, res) => {
     const { carName, manufacturingYear, price } = req.body;
     try {
         console.log("Creating car:", { carName, manufacturingYear, price });
 
-        // Check if an image was uploaded
         let carImageUrl = null;
         if (req.file) {
             const localFilePath = req.file.path;
@@ -23,7 +21,7 @@ const createCar = async (req, res) => {
             carName,
             manufacturingYear,
             price,
-            carImage: carImageUrl // Save the Cloudinary image URL if available
+            carImage: carImageUrl 
         });
 
         await newCar.save();

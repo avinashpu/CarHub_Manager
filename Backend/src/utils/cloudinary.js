@@ -2,10 +2,8 @@ const cloudinary = require('cloudinary').v2;
 const dotenv = require('dotenv');
 const fs = require('fs');
 
-// Load environment variables from .env file
 dotenv.config();
 
-// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -24,13 +22,13 @@ const uploadOnCloudinary = async (localFilePath) => {
     });
     
     console.log("File uploaded to Cloudinary:", response.url);
-    // Remove the local file after a successful upload
+  
     fs.unlinkSync(localFilePath);
     return response;
 
   } catch (error) {
     console.error("Error uploading to Cloudinary:", error.message);
-    // Remove the local file in case of an error
+  
     if (fs.existsSync(localFilePath)) {
       fs.unlinkSync(localFilePath);
     }
